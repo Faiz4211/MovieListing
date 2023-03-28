@@ -24,7 +24,6 @@ const MovieDetails = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor={"#000000"}></StatusBar>
             <Text style={styles.Title}>Title:</Text>
             <View style={styles.body}>
                 <Image style={{
@@ -51,11 +50,11 @@ const MovieDetails = ({ navigation, route }) => {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#35baf6",
+        backgroundColor: "#0e0e0e",
         flex: 1,
     },
     body: {
-        color: "#000000",
+        color: "#0e0e0e",
         fontSize: 20,
         width: "90%",
         alignItems: "center",
@@ -66,21 +65,21 @@ const styles = StyleSheet.create({
     Title: {
         fontSize: 30,
         marginTop: 30,
-        color: "#fff",
+        color: "#f40000",
         fontStyle: 'italic',
         lineHeight: 30,
         fontWeight: 'bold',
         marginLeft: 30,
     },
     Text: {
-        color: "#fff",
+        color: "#f40000",
         fontStyle: 'italic',
         fontSize: 20,
         justifyContent: 'center',
     },
 
     overviewText: {
-        color: "#fff",
+        color: "#f40000",
         paddingTop: 20,
         fontStyle: 'italic',
         fontSize: 20,
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
         left: 30,
     },
     popularityText: {
-        color: "#fff",
+        color: "#f40000",
         fontStyle: 'italic',
         fontSize: 20,
         justifyContent: 'center',

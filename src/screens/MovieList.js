@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StatusBar, ScrollView, Image } from "react-native";
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import Loader from '../components/Loader';
 
 const MovieList = ({ navigation }) => {
     const [isLoadingData, setisLoadingData] = React.useState(false);
@@ -14,26 +16,23 @@ const MovieList = ({ navigation }) => {
             .then((json) => {
                 setisLoadingData(false);
                 setData(json["results"])
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => console.log(error));
 
     }, [])
 
 
-    const colors = ['#e6f6fe', '#cdeefd', '#b3e5fc', '#9addfb', '#81d4fa', '#68cbf8', '#4fc3f7', '#35baf6', '#e6f6fe', '#cdeefd', '#b3e5fc', '#9addfb', '#81d4fa', '#68cbf8', '#4fc3f7', '#35baf6', '#e6f6fe', '#cdeefd', '#b3e5fc', '#9addfb',]
-
     return (
 
         <ScrollView
             horizontal={false}>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#fff" }}>
-                <StatusBar backgroundColor="#000000" />
+            <View style={{ flex: 1, alignItems: 'center', backgroundColor: "#0e0e0e" }}>
 
                 {
                     showData ? (
                         isLoadingData ? (
-                            <Text style={{ color: "#000000", fontSize: 20, fontWeight: 'bold' }}>"LOADING MOVIES..."</Text>
+                            <Loader />
                         ) : (
 
                             data.map((movies, i) => (
@@ -44,43 +43,45 @@ const MovieList = ({ navigation }) => {
 
                                     key={i}
                                     style={{
-                                        color: "#000000",
+                                        color: "#f40000",
                                         fontSize: 20,
-                                        width: "90%",
+                                        width: wp('90%'),
                                         marginBottom: 20,
                                         borderRadius: 20,
                                         alignItems: "center",
-                                        backgroundColor: colors[i],
+                                        backgroundColor: '#e5e5e5',
                                         flex: 1,
                                         flexDirection: 'row',
                                         padding: 15,
                                         alignItems: 'flex-start',
 
+
                                     }}>
                                     <Image style={{
-                                        height: 90,
-                                        width: 60,
-                                        marginRight: 15,
-
+                                        height: hp('15%'),
+                                        width: wp('30%'),
+                                        alignSelf: 'flex-start',
+                                        marginRight: wp('2%')
 
                                     }}
                                         source={{ uri: 'https://image.tmdb.org/t/p/w440_and_h660_face/' + movies.poster_path }}
                                         resizeMode="cover"
 
                                     />
-                                    <View style={{
-
-                                    }}>
+                                    <View >
 
                                         <Text style={{
-                                            color: "#000000", fontStyle: 'italic',
-                                            textAlign: 'center'
+                                            color: "#f40000", fontStyle: 'italic',
+                                            width: wp('50%'),
+                                            fontWeight: '700',
 
                                         }} >
                                             Title={movies.title}
                                         </Text>
                                         <Text style={{
-                                            color: "#000000", fontStyle: 'italic',
+                                            color: "#f40000", fontStyle: 'italic',
+                                            marginTop: hp(4),
+                                            fontWeight: '400'
 
                                         }} >
                                             Date={movies.release_date}
